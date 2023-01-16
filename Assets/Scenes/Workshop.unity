@@ -432,6 +432,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1582244559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582244560}
+  m_Layer: 0
+  m_Name: Portal_Receiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1582244560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582244559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7673064, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 966863102234913512}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653077277
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653077277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.552055, y: 3.6873016, z: 11.514483}
+  m_LocalPosition: {x: 18.552055, y: 3.68719, z: 6.014437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -754,7 +785,7 @@ GameObject:
   - component: {fileID: 977058080925321220}
   - component: {fileID: 977058080925321219}
   m_Layer: 0
-  m_Name: Portal_1
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +802,8 @@ Transform:
   m_LocalPosition: {x: 19.548855, y: 3.0942245, z: -0.9855671}
   m_LocalScale: {x: 0.9013638, y: 0.9013637, z: 0.9013637}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1582244560}
   m_Father: {fileID: 1211836075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -788,8 +820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination_Portal: {fileID: 1653077277}
-  teleportPlayer: 0
-  teleportTeleporter: 1
+  teleportPlayer: 1
+  teleportTeleporter: 0
+  singleUse: 1
 --- !u!136 &977058080925321218
 CapsuleCollider:
   m_ObjectHideFlags: 0

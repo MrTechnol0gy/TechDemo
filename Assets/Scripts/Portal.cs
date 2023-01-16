@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     [SerializeField] GameObject destination_Portal;
     [SerializeField] bool teleportPlayer = true;
     [SerializeField] bool teleportTeleporter = false;
+    [SerializeField] bool singleUse = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +32,16 @@ public class Portal : MonoBehaviour
             {
                 Debug.Log("Player is teleporting.");
                 other.transform.position = destination_POS;
+                if (singleUse == true)
+                {
+                    GetComponent<CapsuleCollider>().enabled = false;
+                    //GetComponent<ParticleSystem>()
+                    Debug.Log("The portal is off.");                    
+                }
             }
             else if (teleportTeleporter == true)
             {
-                Debug.Log("Teleporter is teleporting.");
+                //Debug.Log("Teleporter is teleporting.");
                 this.transform.position = destination_POS;
             }
         }
