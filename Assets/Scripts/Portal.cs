@@ -12,31 +12,28 @@ public class Portal : MonoBehaviour
     [SerializeField] bool teleportTeleporter = false;
     [SerializeField] bool singleUse = false;
 
+    private ParticleSystem ps;
+
     // Start is called before the first frame update
     void Start()
     {
-        destination_POS = destination_Portal.transform.position;        
+        destination_POS = destination_Portal.transform.position;
+        ps = GetComponent<ParticleSystem>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
         
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             if (teleportPlayer == true)
             {
-                Debug.Log("Player is teleporting.");
+                //Debug.Log("Player is teleporting.");
                 other.transform.position = destination_POS;
                 if (singleUse == true)
                 {
-                    GetComponent<CapsuleCollider>().enabled = false;
-                    //GetComponent<ParticleSystem>()
-                    Debug.Log("The portal is off.");                    
+                    GetComponent<CapsuleCollider>().enabled = false;                    
+                    ps.Stop();
+                    //Debug.Log("The portal is off.");                    
                 }
             }
             else if (teleportTeleporter == true)
