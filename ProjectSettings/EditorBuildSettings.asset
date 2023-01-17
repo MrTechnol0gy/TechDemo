@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Challenge.unity
+    guid: ba66d68c7bf68ec41b35cd2086792b25
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 41933bfdf21d9be4590cbbc0c77eb954, type: 2}
