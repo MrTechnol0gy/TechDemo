@@ -12,7 +12,10 @@ public class Instantiate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        InvokeRepeating("MakeWeapon", 3, 1);
+        for (int i = 0; i < 10; i++)
+        {
+            Invoke("MakeWeapon", 2);
+        }
     }
 
     private void MakeWeapon()
@@ -20,6 +23,9 @@ public class Instantiate : MonoBehaviour
         Rigidbody spawnedInstance;
         spawnedInstance = Instantiate(spawnedItem, spawnPoint.position, spawnPoint.rotation) as Rigidbody;
         spawnedInstance.AddForce(spawnPoint.up * spawn_Speed * Time.deltaTime);
-        //spawnedInstance.AddRotation(spawnPoint.up, spawnPoint.rotation);
+        //Destroy(this, 2.5f); //this destroys the script component, which is hilarious
+        //Destroy(gameObject, 2); //this destroys the spawner itself
+        //Destroy(spawnedInstance, 2); //this freezes the spawned item 2 seconds after it is spawned.
+        //GameObject.Destroy(spawnedInstance, 1); //seems to do same as above
     }
 }
