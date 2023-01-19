@@ -25,7 +25,7 @@ public class Instantiate : MonoBehaviour
     {
         if (i < spawn_Amount)
         {
-            Invoke("MakeWeapon", 2);
+            Invoke("MakeWeapon", 1);
             i++;
         }
     }
