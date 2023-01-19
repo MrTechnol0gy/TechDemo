@@ -238,6 +238,10 @@ MonoBehaviour:
   spawnedItem: {fileID: 1095429845}
   spawnPoint: {fileID: 1655139506}
   spawn_Speed: 1
+  spawn_Amount: 50
+  destroy_Script: 0
+  destroy_GameObject: 0
+  destroy_Reality: 1
 --- !u!1 &749305063
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095429840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7500305, y: 8.179562, z: -1.5000076}
+  m_LocalPosition: {x: -7.50015, y: 0.50001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -694,6 +698,10 @@ MonoBehaviour:
   spawnedItem: {fileID: 7053506540060872688}
   spawnPoint: {fileID: 1246761389}
   spawn_Speed: 5
+  spawn_Amount: 50
+  destroy_Script: 0
+  destroy_GameObject: 1
+  destroy_Reality: 0
 --- !u!136 &1498116440
 CapsuleCollider:
   m_ObjectHideFlags: 0
