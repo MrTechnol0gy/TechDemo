@@ -92,7 +92,7 @@ public class Door : MonoBehaviour
     {
         t += 0.5f * Time.deltaTime;
         float angle = Mathf.SmoothStep(maxAngle, minAngle, t);
-        Hinge_One.transform.eulerAngles = new Vector3(0, -angle, 0);
+        Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);
         if (t > 1.0f)
         {
             isLerpCloseSingle = false;
