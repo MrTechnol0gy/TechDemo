@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
+//using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 
@@ -16,11 +17,12 @@ public class Door : MonoBehaviour
     
     private float minAngle = 0.0f;
     private float maxAngle = 90.0f;
+    private float t = 0.0f;
 
     private bool isLerpOpenSingle = false;
     private bool isLerpCloseSingle = false;
     private bool isLerpOpenDouble = false;
-    private bool isLerpCloseDouble = false;
+    private bool isLerpCloseDouble = false;    
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +34,8 @@ public class Door : MonoBehaviour
     void Update()
     {
         if (isLerpOpenSingle)
-        {
-            OpenSingleDoor();
+        {           
+            OpenSingleDoor();            
             isLerpOpenSingle = false;
         }
         if (isLerpCloseSingle)
@@ -43,8 +45,13 @@ public class Door : MonoBehaviour
         }
         if (isLerpOpenDouble == true)
         {
-            OpenDoubleDoor();
+            while (t < 1.0f)
+            {
+                OpenDoubleDoor();                
+                Debug.Log("Open Double Doors");
+            }
             isLerpOpenDouble = false;
+            t = 0.0f;
         }
         if (isLerpCloseDouble == true)
         {
@@ -91,9 +98,10 @@ public class Door : MonoBehaviour
     }
     void OpenDoubleDoor()
     {
-        float angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
+        t += 0.5f * Time.deltaTime;
+        float angle = Mathf.LerpAngle(minAngle, maxAngle, t);        
         Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);
-        Hinge_Two.transform.eulerAngles = new Vector3(0, -angle, 0);
+        Hinge_Two.transform.eulerAngles = new Vector3(0, -angle, 0);        
     }
 
     void CloseDoubleDoor()
