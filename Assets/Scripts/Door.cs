@@ -33,30 +33,21 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isLerpOpenSingle)
-        {           
-            OpenSingleDoor();            
-            isLerpOpenSingle = false;
-        }
-        if (isLerpCloseSingle)
+        if (isLerpOpenSingle == true)
         {
-            CloseSingleDoor();
-            isLerpCloseSingle = false;
+            OpenSingleDoor();            
+        }
+        if (isLerpCloseSingle == true)
+        {
+            CloseSingleDoor();            
         }
         if (isLerpOpenDouble == true)
-        {
-            while (t < 1.0f)
-            {
-                OpenDoubleDoor();                
-                Debug.Log("Open Double Doors");
-            }
-            isLerpOpenDouble = false;
-            t = 0.0f;
+        {            
+            OpenDoubleDoor();
         }
         if (isLerpCloseDouble == true)
         {
-            CloseDoubleDoor();
-            isLerpCloseDouble = false;
+            CloseDoubleDoor();            
         }
     }
 
@@ -64,12 +55,12 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && Single_door == true)
         {
-            Debug.Log("The player has entered the collision area.");
+            //Debug.Log("The player has entered the collision area.");
             isLerpOpenSingle = true;
         }
         else if (other.gameObject.CompareTag("Player") && Double_door == true)
         {
-            Debug.Log("The player has entered the collision area.");
+            //Debug.Log("The player has entered the collision area.");
             isLerpOpenDouble = true;
         }
     }
@@ -87,28 +78,51 @@ public class Door : MonoBehaviour
 
     void OpenSingleDoor()
     {
-        float angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
-        Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);        
+        t += 0.5f * Time.deltaTime;
+        float angle = Mathf.SmoothStep(minAngle, maxAngle, t);
+        Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);
+        if (t > 1.0f)
+        {
+            isLerpOpenSingle = false;
+            t = 0.0f;
+        }
     }
 
     void CloseSingleDoor()
     {
-        float angle = Mathf.LerpAngle(maxAngle, minAngle, Time.time);
-        Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);        
+        t += 0.5f * Time.deltaTime;
+        float angle = Mathf.SmoothStep(maxAngle, minAngle, t);
+        Hinge_One.transform.eulerAngles = new Vector3(0, -angle, 0);
+        if (t > 1.0f)
+        {
+            isLerpCloseSingle = false;
+            t = 0.0f;
+        }
     }
     void OpenDoubleDoor()
-    {
+    {        
         t += 0.5f * Time.deltaTime;
-        float angle = Mathf.LerpAngle(minAngle, maxAngle, t);        
+        float angle = Mathf.SmoothStep(minAngle, maxAngle, t);        
         Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);
-        Hinge_Two.transform.eulerAngles = new Vector3(0, -angle, 0);        
+        Hinge_Two.transform.eulerAngles = new Vector3(0, -angle, 0); 
+        if (t > 1.0f)
+        {
+            isLerpOpenDouble = false;
+            t = 0.0f;
+        }
     }
 
     void CloseDoubleDoor()
     {
-        float angle = Mathf.LerpAngle(maxAngle, minAngle, Time.time);
+        t += 0.5f * Time.deltaTime;
+        float angle = Mathf.SmoothStep(maxAngle, minAngle, t);
         Hinge_One.transform.eulerAngles = new Vector3(0, angle, 0);
         Hinge_Two.transform.eulerAngles = new Vector3(0, -angle, 0);
+        if (t > 1.0f)
+        {
+            isLerpCloseDouble = false;
+            t = 0.0f;
+        }
     }
 
 }
