@@ -132,6 +132,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5972938013523484513, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972938013523484513, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972938013523484513, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
+      propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972938013523484513, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
@@ -189,6 +197,14 @@ PrefabInstance:
     - target: {fileID: 5972938013523484540, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972938013523484543, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
+      propertyPath: m_Thrust
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972938013523484543, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
+      propertyPath: moveSpeed
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
