@@ -333,9 +333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 1052366732}
   platformDistance: 5
-  UpDown: 0
+  UpDown: 1
   LeftRight: 0
-  ForwardBackward: 1
+  ForwardBackward: 0
   delay: 0
 --- !u!1001 &1146773024
 PrefabInstance:
