@@ -6,20 +6,17 @@ using UnityEngine;
 
 public class MoveLinkedPlayer : MonoBehaviour
 {
-    private GameObject player; 
-    private Vector3 _startPosition;
-    private Vector3 _playerentryPOS;
+    private GameObject player;     
     [SerializeField] GameObject platform;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        _startPosition = this.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
@@ -28,10 +25,7 @@ public class MoveLinkedPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag ("Player"))
         {
-            //this.gameObject.transform.parent = platform.transform;
-            Debug.Log("Player go move");
-            _playerentryPOS = player.transform.position;
-            player.transform.position = this.transform.position - _playerentryPOS;
+            other.gameObject.transform.SetParent(gameObject.transform, true);
         }
     }
 
@@ -40,7 +34,7 @@ public class MoveLinkedPlayer : MonoBehaviour
         if (other.gameObject.CompareTag ("Player"))
         {
             Debug.Log("Player no move");
-            player.transform.position = player.transform.position;
+            other.gameObject.transform.parent = null;
         }
     }
 }
