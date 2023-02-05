@@ -96,7 +96,7 @@ public class MobilePlatform : MonoBehaviour
     {
         t += 0.5f * Time.deltaTime;
         float distance = Mathf.SmoothStep(_startPositionx, platformDistance, t);
-        platform.transform.localPosition = new Vector3(distance, 0, 0);
+        platform.transform.localPosition = new Vector3(distance, _startPositiony, _startPositionz);
         if (t > 1.0f)
         {
             platformLeft = false;
@@ -107,8 +107,8 @@ public class MobilePlatform : MonoBehaviour
     void PlatformRight()
     {
         t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(platformDistance, -_startPositionx, t);
-        platform.transform.localPosition = new Vector3(distance, 0, 0);
+        float distance = Mathf.SmoothStep(platformDistance, _startPositionx, t);
+        platform.transform.localPosition = new Vector3(distance, _startPositiony, _startPositionz);
         if (t > 1.0f)
         {
             platformRight = false;
@@ -119,8 +119,8 @@ public class MobilePlatform : MonoBehaviour
     void PlatformForward()
     {
         t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(_startPositionz, platformDistance, t);
-        platform.transform.localPosition = new Vector3(0, 0, distance);
+        float distance = Mathf.SmoothStep(-_startPositionz, platformDistance, t); //why does this need to be negative, someone needs to explain this math to me
+        platform.transform.localPosition = new Vector3(_startPositionx, _startPositiony, distance);
         if (t > 1.0f)
         {
             platformForward = false;
@@ -131,8 +131,8 @@ public class MobilePlatform : MonoBehaviour
     void PlatformBackward()
     {
         t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(platformDistance, -_startPositionz, t);
-        platform.transform.localPosition = new Vector3(0, 0, distance);
+        float distance = Mathf.SmoothStep(platformDistance, -_startPositionz, t); //why does positionz need to be negative
+        platform.transform.localPosition = new Vector3(_startPositionx, _startPositiony, distance);
         if (t > 1.0f)
         {
             platformBackward = false;
