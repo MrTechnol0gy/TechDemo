@@ -4,140 +4,59 @@ using UnityEngine;
 
 public class MobilePlatform : MonoBehaviour
 {
+    [SerializeField] private GameObject start, destination;
+    [SerializeField] private float _speed = 1.0f;
 
-    private float _startPositionz;
-    private float _startPositionx;
-    private float _startPositiony;
+    private bool _switch = false;
+    private bool _start = false;
     private float t = 0.0f;
-    private bool platformRise = true;
-    private bool platformFall = false;
-    private bool platformLeft = true;
-    private bool platformRight = false;
-    private bool platformForward = true;
-    private bool platformBackward = false;
-
-    [SerializeField] GameObject platform;
-    [SerializeField] float platformDistance = 5.0f;
-    [SerializeField] bool UpDown = false;
-    [SerializeField] bool LeftRight = false;
-    [SerializeField] bool ForwardBackward = false;
-    [SerializeField] int delay = 0; //doesn't work above zero, introduces stutters
+    private Vector3 startPos, endPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        _startPositionz = platform.transform.localPosition.z;
-        _startPositiony = platform.transform.localPosition.y;
-        _startPositionx = platform.transform.localPosition.x;
+        _start = true;
+        startPos = start.transform.position;
+        endPos = destination.transform.position; //a transform is not a vector3, but a transform.position is
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (UpDown == true)
+        if (_start)
         {
-            if (platformRise == true)
+            if (_switch == false)
             {
-                Invoke("PlatformUp", delay);
+                PlatformGo();
             }
-            else if (platformFall == true)
+            else if (_switch == true)
             {
-                Invoke("PlatformDown", delay);
-            }
-        }
-        else if (LeftRight == true)
-        {
-            if (platformLeft == true)
-            {
-                Invoke("PlatformLeft", delay);
-            }
-            else if (platformRight == true)
-            {
-                Invoke("PlatformRight", delay);
-            }
-        }
-        else if (ForwardBackward == true)
-        {
-            if (platformForward == true)
-            {
-                Invoke("PlatformForward", delay);
-            }
-            else if (platformBackward == true)
-            {
-                Invoke("PlatformBackward", delay);
+                PlatformCome();
             }
         }
     }
-    void PlatformUp()
-    {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(_startPositiony, platformDistance, t);
-        platform.transform.localPosition = new Vector3(_startPositionx, distance, _startPositionz);
+
+    void PlatformGo()
+    {        
+        t += 0.5f * Time.deltaTime * _speed;
+        transform.localPosition = Vector3.Lerp(startPos, endPos, t);
         if (t > 1.0f)
         {
-            platformRise = false;
+            _switch = true;
             t = 0.0f;
-            platformFall = true;
+            Debug.Log("go");
         }
+        
     }
-    void PlatformDown()
+    void PlatformCome()
     {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(platformDistance, -_startPositiony, t);
-        platform.transform.localPosition = new Vector3(_startPositionx, distance, _startPositionz);
+        t += 0.5f * Time.deltaTime * _speed;
+        transform.localPosition = Vector3.Lerp(endPos, startPos, t);
         if (t > 1.0f)
         {
-            platformFall = false;
+            _switch = false;
             t = 0.0f;
-            platformRise = true;
-        }
-    }
-    void PlatformLeft()
-    {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(_startPositionx, platformDistance, t);
-        platform.transform.localPosition = new Vector3(distance, _startPositiony, _startPositionz);
-        if (t > 1.0f)
-        {
-            platformLeft = false;
-            t = 0.0f;
-            platformRight = true;
-        }
-    }
-    void PlatformRight()
-    {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(platformDistance, _startPositionx, t);
-        platform.transform.localPosition = new Vector3(distance, _startPositiony, _startPositionz);
-        if (t > 1.0f)
-        {
-            platformRight = false;
-            t = 0.0f;
-            platformLeft = true;
-        }
-    }
-    void PlatformForward()
-    {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(-_startPositionz, platformDistance, t); //why does this need to be negative, someone needs to explain this math to me
-        platform.transform.localPosition = new Vector3(_startPositionx, _startPositiony, distance);
-        if (t > 1.0f)
-        {
-            platformForward = false;
-            t = 0.0f;
-            platformBackward = true;
-        }
-    }
-    void PlatformBackward()
-    {
-        t += 0.5f * Time.deltaTime;
-        float distance = Mathf.SmoothStep(platformDistance, -_startPositionz, t); //why does positionz need to be negative
-        platform.transform.localPosition = new Vector3(_startPositionx, _startPositiony, distance);
-        if (t > 1.0f)
-        {
-            platformBackward = false;
-            t = 0.0f;
-            platformForward = true;
+            Debug.Log("come");
         }
     }
 }
