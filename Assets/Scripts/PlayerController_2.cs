@@ -10,6 +10,8 @@ public class PlayerController_2 : MonoBehaviour
     Vector2 m_Look;
     Rigidbody m_Rigidbody;
 
+    bool sprint = false;
+
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float m_Thrust = 20f;
 
@@ -51,15 +53,30 @@ public class PlayerController_2 : MonoBehaviour
     }
 
     public void OnSprint()
-    {
-        moveSpeed += 500f; //this works, but permanently adds the speed
+    {  
+        if (sprint == false)
+        {
+            sprint = true;
+        }
+        else
+        {
+            sprint = false;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
-        m_Rigidbody.velocity = movement;
+        if (sprint == true)
+        {
+            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
+            m_Rigidbody.velocity = movement * 2;
+        }
+        else
+        {
+            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
+            m_Rigidbody.velocity = movement;
+        }
 
         //mouse look        
         //Vector2 look = new Vector2(m_Look.x, m_Look.y) * Time.deltaTime;

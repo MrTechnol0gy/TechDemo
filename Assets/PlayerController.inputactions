@@ -98,6 +98,28 @@
                 },
                 {
                     "name": "",
+                    "id": "0fdec02c-59ef-4489-a256-ac0862fb4905",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Buttons",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e9b3d44-2c0e-4b22-a177-c99d6e8013f7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Buttons",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e9f665b1-850d-41c0-b2ff-a67969ab836e",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
