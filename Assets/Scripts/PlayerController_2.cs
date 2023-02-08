@@ -49,11 +49,11 @@ public class PlayerController_2 : MonoBehaviour
 
     public void OnJump()
     {
-        m_Rigidbody.AddForce(0, m_Thrust, 0);
+        m_Rigidbody.AddForce(0, m_Thrust * 10, 0);
     }
 
     public void OnSprint()
-    {  
+    {          
         if (sprint == false)
         {
             sprint = true;
@@ -62,6 +62,11 @@ public class PlayerController_2 : MonoBehaviour
         {
             sprint = false;
         }
+    }
+
+    public void OnButton()
+    {
+        //if (PlayerInput.ButtonControl["esc"].IsPressed()
     }
 
     // Update is called once per frame
