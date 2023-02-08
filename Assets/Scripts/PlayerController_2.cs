@@ -12,6 +12,8 @@ public class PlayerController_2 : MonoBehaviour
 
     bool sprint = false;
 
+    public GameObject pauseScreen;
+
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float m_Thrust = 20f;
 
@@ -53,38 +55,62 @@ public class PlayerController_2 : MonoBehaviour
     }
 
     public void OnSprint()
-    {          
-        if (sprint == false)
+    {       
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame)   
         {
-            sprint = true;
-        }
-        else
-        {
-            sprint = false;
-        }
+            if (sprint == false)
+            {
+                sprint = true;
+            }
+            else 
+            {
+                sprint = false;
+            }
+        }        
     }
 
-    public void OnButton()
+    public void OnButtons()
     {
-        //if (PlayerInput.ButtonControl["esc"].IsPressed()
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            PauseUnpause();
+        }
+        else if (Gamepad.current.startButton.wasPressedThisFrame)
+        {
+            PauseUnpause();
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        if (sprint == true)
-        {
-            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
-            m_Rigidbody.velocity = movement * 2;
-        }
-        else
+    {        
+        if (sprint == false)
         {
             Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
             m_Rigidbody.velocity = movement;
         }
-
+        else if (sprint == true)
+        {
+            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
+            m_Rigidbody.velocity = movement * 2;
+        }
+    
         //mouse look        
         //Vector2 look = new Vector2(m_Look.x, m_Look.y) * Time.deltaTime;
         //m_Rigidbody.rotation = look; //nope
+    }
+
+    public void PauseUnpause()
+    {
+            if (!pauseScreen.activeInHierarchy)
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
     }
 }
