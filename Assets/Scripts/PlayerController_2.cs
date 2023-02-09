@@ -96,13 +96,13 @@ public class PlayerController_2 : MonoBehaviour
     {        
         if (sprint == false)
         {
-            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
-            m_Rigidbody.velocity = movement;
+            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;
+            m_Rigidbody.AddRelativeForce(movement * moveSpeed, ForceMode.Force);
         }
         else if (sprint == true)
         {
-            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
-            m_Rigidbody.velocity = movement * 2;
+            Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime; 
+            m_Rigidbody.AddRelativeForce(movement * moveSpeed * 2, ForceMode.Force);
         }
         float rotateDirection = controls.Player.Rotate.ReadValue<float>();
         transform.Rotate(Vector3.up * Time.deltaTime * _rotateSpeed * rotateDirection);
