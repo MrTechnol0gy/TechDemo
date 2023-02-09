@@ -26,7 +26,7 @@ public class PlayerController_2 : MonoBehaviour
     {
         controls = new PlayerController();
         controls.Player.Move.performed += ctx => m_Move = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => m_Move = Vector2.zero;               
+        controls.Player.Move.canceled += ctx => m_Move = Vector2.zero;
     }
 
     void Start()
@@ -49,10 +49,10 @@ public class PlayerController_2 : MonoBehaviour
         m_Move = value.Get<Vector2>();
     }
 
-    public void OnRotate(InputValue value)
-    {
-        m_Rotate = value.Get<Vector3>();
-    }
+    // public void OnRotate(InputValue value)
+    // {
+    //     m_Rotate = value.Get<Vector3>();
+    // }
 
     public void OnLook(InputValue value)
     {
