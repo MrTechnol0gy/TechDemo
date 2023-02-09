@@ -9,6 +9,7 @@ public class PlayerController_2 : MonoBehaviour
     PlayerController controls; //creates a reference for the controls (controls.Player.etc etc)
     //https://medium.com/nerd-for-tech/new-unity-input-system-scripting-actions-aa447c2cc84d
     Vector2 m_Move;
+    Vector3 m_Rotate; //workshopping
     Vector2 m_Look;
     Rigidbody m_Rigidbody;
 
@@ -46,6 +47,11 @@ public class PlayerController_2 : MonoBehaviour
     public void OnMove(InputValue value)
     {
         m_Move = value.Get<Vector2>();
+    }
+
+    public void OnRotate(InputValue value)
+    {
+        m_Rotate = value.Get<Vector3>();
     }
 
     public void OnLook(InputValue value)
@@ -100,7 +106,8 @@ public class PlayerController_2 : MonoBehaviour
         }
         float rotateDirection = controls.Player.Rotate.ReadValue<float>();
         transform.Rotate(Vector3.up * Time.deltaTime * _rotateSpeed * rotateDirection);
-    
+        //Vector3 rotation = new Vector3(0.0f, m_Rotate.y, 0.0f) * _rotateSpeed * Time.deltaTime;
+        //m_Rigidbody.rotation = rotation; VECTOR3/QUATERNION ISSUE
     }
 
     public void PauseUnpause()
