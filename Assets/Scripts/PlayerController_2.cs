@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerController_2 : MonoBehaviour
 {
-    PlayerController controls;
+    PlayerController controls; //creates a reference for the controls (controls.Player.etc etc)
+    //https://medium.com/nerd-for-tech/new-unity-input-system-scripting-actions-aa447c2cc84d
     Vector2 m_Move;
     Vector2 m_Look;
     Rigidbody m_Rigidbody;
@@ -17,11 +19,13 @@ public class PlayerController_2 : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float m_Thrust = 20f;
 
+    private float _rotateSpeed = 50f;    
+
     void Awake()
     {
         controls = new PlayerController();
         controls.Player.Move.performed += ctx => m_Move = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => m_Move = Vector2.zero;        
+        controls.Player.Move.canceled += ctx => m_Move = Vector2.zero;               
     }
 
     void Start()
@@ -94,10 +98,9 @@ public class PlayerController_2 : MonoBehaviour
             Vector3 movement = new Vector3(m_Move.x, 0.0f, m_Move.y) * moveSpeed * Time.deltaTime;        
             m_Rigidbody.velocity = movement * 2;
         }
+        float rotateDirection = controls.Player.Rotate.ReadValue<float>();
+        transform.Rotate(Vector3.up * Time.deltaTime * _rotateSpeed * rotateDirection);
     
-        //mouse look        
-        //Vector2 look = new Vector2(m_Look.x, m_Look.y) * Time.deltaTime;
-        //m_Rigidbody.rotation = look; //nope
     }
 
     public void PauseUnpause()
