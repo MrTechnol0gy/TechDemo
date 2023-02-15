@@ -10,13 +10,14 @@ public class RayCast : MonoBehaviour
     //this raycast is designed to make an object float
 
     public Rigidbody rb;
+    [SerializeField] float maxHeight;
     [SerializeField] int forceToApply; //should be at least 10* the objects mass
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(ray, 2))
+        if (Physics.Raycast(ray, maxHeight))
         {
             FloatUp();
         }
