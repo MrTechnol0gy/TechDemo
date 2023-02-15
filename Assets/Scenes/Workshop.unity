@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,15 +228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972938013523484517, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 523.0105
+      value: 449.5
       objectReference: {fileID: 0}
     - target: {fileID: 5972938013523484517, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.00074
+      value: 42.25
       objectReference: {fileID: 0}
     - target: {fileID: 5972938013523484517, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 108.00217
+      value: 127.75
       objectReference: {fileID: 0}
     - target: {fileID: 5972938013523484517, guid: 4b6077750c1860043b2a47daa335e308, type: 3}
       propertyPath: m_LocalRotation.w
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1743477367}
   - component: {fileID: 1743477366}
   - component: {fileID: 1743477365}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e83e07efaf3ef0a408af677a4209aaeb, type: 2}
+  - {fileID: 2100000, guid: 9e3a7bcb58e4a2641ba1a3fc18a081da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
