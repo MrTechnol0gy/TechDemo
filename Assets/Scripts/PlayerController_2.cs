@@ -14,6 +14,7 @@ public class PlayerController_2 : MonoBehaviour
     Rigidbody m_Rigidbody;
 
     bool sprint = false;
+    bool jumpAllowed = true;
 
     public GameObject pauseScreen;
 
@@ -61,7 +62,17 @@ public class PlayerController_2 : MonoBehaviour
 
     public void OnJump()
     {
-        m_Rigidbody.AddForce(0, m_Thrust * 10, 0);
+        if (jumpAllowed == true)
+        {
+            m_Rigidbody.AddForce(0, m_Thrust * 10, 0);
+            jumpAllowed = false;
+            Invoke("ResetJump", 1);
+        }
+    }
+
+    private void ResetJump()
+    {
+        jumpAllowed = true;
     }
 
     public void OnSprint()
