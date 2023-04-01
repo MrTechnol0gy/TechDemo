@@ -5,18 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadWonderland()
+    private AudioSource sfx;
+
+    void Start()
     {
-        SceneManager.LoadScene("Wonderland");
+        sfx = GetComponentInChildren<AudioSource>();
+    }
+    public void LoadWonderland()
+    {        
+        sfx.PlayOneShot(sfx.clip, 1);
+        SceneManager.LoadScene("Wonderland");        
     }
 
     public void LoadWorkshop()
     {
+        sfx.PlayOneShot(sfx.clip, 1);
         SceneManager.LoadScene("Workshop");
     }
 
     public void QuitGame()
     {
-        Application.Quit();
+        sfx.PlayOneShot(sfx.clip, 1);
+        Application.Quit();        
     }
 }

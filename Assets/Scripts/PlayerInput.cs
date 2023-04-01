@@ -10,6 +10,8 @@ public class PlayerInput : MonoBehaviour
 
     private Player player;
     private PlayerMovement playerMovement;
+
+    public GameObject pauseScreen;
    
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,24 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.ToggleJump();            
+            player.ToggleJump();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
+    }
+    public void PauseUnpause()
+    {
+            if (!pauseScreen.activeInHierarchy)
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
     }
 }
