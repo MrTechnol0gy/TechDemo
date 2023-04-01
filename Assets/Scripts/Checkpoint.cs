@@ -7,6 +7,7 @@ public class Checkpoint : MonoBehaviour
     Vector3 respawn_POS;
     private ParticleSystem ps;
     private GameObject enest; //EaglesNest locator
+    private AudioSource sfx;
 
     [Header("RespawnPoint child goes here.")]
     [SerializeField] GameObject respawn_Location;
@@ -15,6 +16,7 @@ public class Checkpoint : MonoBehaviour
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        sfx = GetComponent<AudioSource>();
         enest = GameObject.FindWithTag("GameController");
     }       
 
@@ -23,6 +25,7 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             ps.Play();
+            sfx.Play();
             //Debug.Log("Particles are go.");
             enest.GetComponent<EaglesNest>().current_Checkpoint = respawn_Location;
         }

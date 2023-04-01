@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadTechDemo()
+    public void LoadWonderland()
     {
-        SceneManager.LoadScene("TechDemo");
+        SceneManager.LoadScene("Wonderland");
     }
 
     public void LoadWorkshop()

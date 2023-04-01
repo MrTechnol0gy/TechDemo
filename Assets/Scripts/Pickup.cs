@@ -8,12 +8,14 @@ public class Pickup : MonoBehaviour
     [SerializeField] int respawn_Timer = 1;
 
     private GameObject enest; //EaglesNest locator
+    private AudioSource sfx;
     public GameObject pickup;
 
     // Start is called before the first frame update
     void Start()
     {
         enest = GameObject.FindWithTag("GameController");
+        sfx = GetComponent<AudioSource>();
         pickup = gameObject;
     }
 
@@ -27,21 +29,25 @@ public class Pickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && repeatable == false)
         {
-            this.gameObject.SetActive(false);
+            sfx.Play();
+            Invoke("DeactivateMe", 0.1f);            
         }
         else if (other.gameObject.CompareTag("Player") && repeatable == true)
         {
-            //pickup.GetComponent<MeshRenderer>().enabled = false;
-            //pickup.GetComponent<SphereCollider>().enabled = false;
-            pickup.SetActive(false);
+            
+            sfx.Play();
+            Invoke("DeactivateMe", 0.1f);            
             Invoke("respawn_Pickup", respawn_Timer);
         }
     }
 
     private void respawn_Pickup()
-    {
-        //pickup.GetComponent<MeshRenderer>().enabled = true;
-        //pickup.GetComponent<SphereCollider>().enabled = true;
+    {        
         pickup.SetActive(true);
+    }
+
+    private void DeactivateMe()
+    {        
+        pickup.SetActive(false);
     }
 }

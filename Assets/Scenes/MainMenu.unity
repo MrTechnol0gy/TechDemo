@@ -662,6 +662,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7980754581466578181, guid: 3c281ff9f35bb9c4c806e903c91d1fec, type: 3}
+      propertyPath: m_Name
+      value: Wonderland
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980754581466578183, guid: 3c281ff9f35bb9c4c806e903c91d1fec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadWonderland
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980754581479986702, guid: 3c281ff9f35bb9c4c806e903c91d1fec, type: 3}
+      propertyPath: m_text
+      value: Start
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c281ff9f35bb9c4c806e903c91d1fec, type: 3}
 --- !u!114 &389054827 stripped
@@ -1923,6 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8265192953930226322}
+  maxHeight: 0
   forceToApply: 10
 --- !u!54 &8265192953930226322
 Rigidbody:
