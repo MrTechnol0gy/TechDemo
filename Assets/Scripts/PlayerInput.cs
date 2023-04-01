@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement playerMovement;
 
     public GameObject pauseScreen;
+    public GameObject playerPanel;
    
     // Start is called before the first frame update
     void Start()
@@ -46,12 +47,16 @@ public class PlayerInput : MonoBehaviour
     {
             if (!pauseScreen.activeInHierarchy)
             {
+                //Debug.Log("Paused.");
                 pauseScreen.SetActive(true);
+                playerPanel.SetActive(false);
                 Time.timeScale = 0f;
             }
             else
             {
+                //Debug.Log("Unpaused.");
                 pauseScreen.SetActive(false);
+                playerPanel.SetActive(true);
                 Time.timeScale = 1f;
             }
     }
