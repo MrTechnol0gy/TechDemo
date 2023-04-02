@@ -11,6 +11,8 @@ public class Portal : MonoBehaviour
     [SerializeField] bool teleportPlayer = true;
     [SerializeField] bool teleportTeleporter = false;
     [SerializeField] bool singleUse = false;
+    [SerializeField] AudioSource warpSFX;
+    [SerializeField] AudioSource activeSFX;
 
     private ParticleSystem ps;
 
@@ -27,20 +29,31 @@ public class Portal : MonoBehaviour
         {
             if (teleportPlayer == true)
             {
-                //Debug.Log("Player is teleporting.");
-                other.transform.position = destination_POS;
-                if (singleUse == true)
-                {
-                    GetComponent<CapsuleCollider>().enabled = false;                    
-                    ps.Stop();
-                    //Debug.Log("The portal is off.");                    
-                }
+                StartCoroutine(TeleportPlayer(other));
             }
             else if (teleportTeleporter == true)
             {
-                //Debug.Log("Teleporter is teleporting.");
-                this.transform.position = destination_POS;
+                Invoke("TeleportTeleporter", warpSFX.clip.length);
+            }
+            warpSFX.PlayOneShot(warpSFX.clip, 1);
+            if (singleUse == true)
+            {
+                GetComponent<CapsuleCollider>().enabled = false;
+                ps.Stop();
+                activeSFX.Stop();
+                
             }
         }
+    }
+
+    private IEnumerator TeleportPlayer(Collider other)
+    {
+        yield return new WaitForSeconds(warpSFX.clip.length);
+        other.transform.position = destination_POS;
+    }
+
+    void TeleportTeleporter()
+    {
+        this.transform.position = destination_POS;
     }
 }
