@@ -19,20 +19,18 @@ public class Door : MonoBehaviour
     [Header("Drop door hinge game objects here.")]
     [SerializeField] GameObject Hinge_One;
     [SerializeField] GameObject Hinge_Two;
+
+    [Header("Door Audio")]
+    [SerializeField] AudioSource Door_Open;
+    [SerializeField] AudioSource Door_Close;
     
     private float minAngle = 0.0f;
     private float maxAngle = 90.0f;
     private float t = 0.0f;
+    private bool active;                // used to prevent multiple stacking 'ontriggerenters'
 
     DoorState doorState = DoorState.closed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         StateProceed();
@@ -72,16 +70,19 @@ public class Door : MonoBehaviour
     }
     IEnumerator OnTriggerEnter(Collider other) //opens the door when the player enters the collider area
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && active == false)
         {
-            if (doorState != DoorState.closing)
+            active = true;
+            if (doorState != DoorState.closing && doorState != DoorState.opening)
             {
                 doorState = DoorState.opening;
+                Door_Open.Play();
             }
             else 
             {
                 yield return new WaitUntil(() => doorState == DoorState.closed);
                 doorState = DoorState.opening;
+                Door_Open.Play();
             }
         }        
     }
@@ -89,16 +90,19 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (doorState != DoorState.opening)
+            if (doorState != DoorState.opening && doorState != DoorState.closing)
             {
                 doorState = DoorState.closing;
+                Door_Close.Play();
             }
             else
             {
                 yield return new WaitUntil(() => doorState == DoorState.open);
                 doorState = DoorState.closing;
+                Door_Close.Play();
             }
         }
+        active = false;
     }
 
     void OpenSingleDoor()
@@ -125,7 +129,7 @@ public class Door : MonoBehaviour
         }
     }
     void OpenDoubleDoor()
-    {        
+    {                
         t += 0.5f * Time.deltaTime;
         float angle = Mathf.SmoothStep(minAngle, maxAngle, t);        
         Hinge_One.transform.localEulerAngles = new Vector3(0, angle, 0);
