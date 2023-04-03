@@ -334,7 +334,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.000031471, y: 0.000016212}
-  m_SizeDelta: {x: 311.9752, y: 126.74}
+  m_SizeDelta: {x: 311.9752, y: 136.7366}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &246102060338790835
 CanvasRenderer:
@@ -1241,7 +1241,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 314.6318, y: 126.7386}
+  m_SizeDelta: {x: 314.6318, y: 140.4983}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &246102061883862955
 CanvasRenderer:
@@ -1382,6 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 7353701859185696470, guid: cb00be00e8f50674794ce76e726826b4, type: 3}
+  playerPanel: {fileID: 0}
 --- !u!114 &246102061939717048
 MonoBehaviour:
   m_ObjectHideFlags: 0
