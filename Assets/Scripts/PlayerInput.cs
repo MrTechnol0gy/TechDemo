@@ -13,6 +13,9 @@ public class PlayerInput : MonoBehaviour
 
     public GameObject pauseScreen;
     public GameObject playerPanel;
+
+    [SerializeField] GameObject currentInterObj = null;
+    [SerializeField] InteractionObject currentInterObjScript = null;
    
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,10 @@ public class PlayerInput : MonoBehaviour
         {
             player.ToggleJump();
         }
+        if (Input.GetKeyDown(KeyCode.F) && currentInterObj == true)
+        {
+            CheckInteraction();
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseUnpause();
@@ -59,5 +66,38 @@ public class PlayerInput : MonoBehaviour
                 playerPanel.SetActive(true);
                 Time.timeScale = 1f;
             }
+    }
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.CompareTag("InterObject") == true)
+        {
+            currentInterObj = other.gameObject;
+            currentInterObjScript = currentInterObj.GetComponent<InteractionObject>();
+        }
+    }
+
+    void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag("InterObject") == true)
+        {
+            currentInterObj = null;
+            currentInterObjScript = null;
+        }
+    }
+    public void CheckInteraction()
+    {
+       currentInterObjScript.DebugTest();
+       if (currentInterObjScript.interType == InteractionObject.InteractableType.nothing)
+       {
+            currentInterObjScript.Nothing();
+       }
+       else if (currentInterObjScript.interType == InteractionObject.InteractableType.info)
+       {
+            currentInterObjScript.Info();
+       }       
+       else if (currentInterObjScript.interType == InteractionObject.InteractableType.dialogue)
+       {
+            currentInterObjScript.Dialogue();
+       }
     }
 }

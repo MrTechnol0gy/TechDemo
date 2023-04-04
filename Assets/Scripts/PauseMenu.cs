@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void LoadMainMenu()
     {
+        Time.timeScale = 1f;                            // resets the timescaling if you leave the scene from this method after getting here thorugh the pause menu
         sfx.PlayOneShot(sfx.clip, 1);
         SceneManager.LoadScene("MainMenu");
     }
