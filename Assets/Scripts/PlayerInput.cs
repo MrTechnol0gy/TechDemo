@@ -11,8 +11,8 @@ public class PlayerInput : MonoBehaviour
     private Player player;
     private PlayerMovement playerMovement;
 
-    public GameObject pauseScreen;
-    public GameObject playerPanel;
+    public GameObject pauseScreen;  // puase screen game object goes here
+    public GameObject playerPanel;  // player hud game object goes here
 
     [SerializeField] GameObject currentInterObj = null;
     [SerializeField] InteractionObject currentInterObjScript = null;
@@ -94,7 +94,11 @@ public class PlayerInput : MonoBehaviour
        else if (currentInterObjScript.interType == InteractionObject.InteractableType.info)
        {
             currentInterObjScript.Info();
-       }       
+       }    
+       else if (currentInterObjScript.interType == InteractionObject.InteractableType.pickup)
+       {
+            currentInterObjScript.PickUp();
+       }     
        else if (currentInterObjScript.interType == InteractionObject.InteractableType.dialogue)
        {
             currentInterObjScript.Dialogue();

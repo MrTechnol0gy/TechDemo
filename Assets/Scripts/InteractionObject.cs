@@ -9,7 +9,8 @@ public class InteractionObject : MonoBehaviour
     public enum InteractableType
     {
         nothing,        // default nothing object
-        info,           // objects that give simple info        
+        info,           // objects that give simple info    
+        pickup,    
         dialogue        // lines of dialogue from a character
     }
 
@@ -26,11 +27,11 @@ public class InteractionObject : MonoBehaviour
 
     public void Start()
     {
-        infoText = GameObject.Find("InfoText").GetComponent<TMP_Text>();
+        infoText = GameObject.Find("InfoText").GetComponentInChildren<TMP_Text>();
     }
     public void DebugTest()
     {
-            Debug.Log("this is a " + gameObject.name);
+        Debug.Log("this is a " + gameObject.name);
     }
 
     public void Nothing()
@@ -42,6 +43,10 @@ public class InteractionObject : MonoBehaviour
     {
         StartCoroutine(ShowInfo(infoMessage, 2.5f));
     }   
+    public void PickUp()
+    {
+        this.gameObject.SetActive(false);
+    }
 
     public void Dialogue()
     {
@@ -53,5 +58,20 @@ public class InteractionObject : MonoBehaviour
         infoText.text = message;
         yield return new WaitForSeconds(delay);
         infoText.text = null;
+    }
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.CompareTag("Player") == true)
+        {
+            
+        }
+    }
+
+    void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag("Player") == true)
+        {
+            
+        }
     }
 }
