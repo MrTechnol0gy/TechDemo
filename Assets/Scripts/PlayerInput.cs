@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
     {
         player.AddMovementInput(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && playerMovement.GetMovementMode() != MovementMode.Crouching)
         {
             player.ToggleRun();
         }
