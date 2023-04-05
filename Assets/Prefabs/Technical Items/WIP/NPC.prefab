@@ -2534,6 +2534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Characters
       objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
+      propertyPath: m_TagString
+      value: InterObject
+      objectReference: {fileID: 0}
     - target: {fileID: 100100, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2600,6 +2604,57 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4a814d0c5dbba7545b8ddf112351b4e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
+--- !u!1 &4584748850649535649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100040, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
+  m_PrefabInstance: {fileID: 4584748850649567849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &2135940027067220869
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584748850649535649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!114 &2205494301807808479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584748850649535649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.13882035, g: 0.8301887, b: 0.090067655, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6072837434917399314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584748850649535649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e11bdf3771bfca45a385d775806612e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interType: 3
+  infoMessage: 
+  sentences: []
 --- !u!4 &4584748850649958593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400040, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
