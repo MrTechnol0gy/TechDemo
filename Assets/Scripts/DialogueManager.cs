@@ -15,9 +15,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogue = new Queue<string>();
-        player = GameObject.FindWithTag("Player"); // this works
-        
+        dialogue = new Queue<string>();        
     }
 
     public void StartDialogue(string[] sentences)
@@ -51,16 +49,11 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(false);
         dialogue.Clear();
 
-        //player.GetComponent<PlayerMovement_2D>().enabled = true;
-        //player.GetComponent<PlayerInteraction>().enabled = true;
+        Time.timeScale = 1f;
     }
 
     void SuspendPlayerControl()
     {
-        //player.GetComponent<PlayerMovement_2D>().enabled = false;
-        //player.GetComponent<PlayerInteraction>().enabled = false;
-
-        //animator.SetFloat("Speed", 0);
-        //player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        Time.timeScale = 0f;
     }
 }

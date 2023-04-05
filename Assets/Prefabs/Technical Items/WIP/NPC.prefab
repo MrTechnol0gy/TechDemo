@@ -2655,22 +2655,6 @@ MonoBehaviour:
   interType: 3
   infoMessage: 
   sentences: []
---- !u!114 &4721925273060733882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4584748850649535649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c52274a322f7c449a5953f92902a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 0}
-  dialogueText: {fileID: 0}
-  player: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!4 &4584748850649958593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400040, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}

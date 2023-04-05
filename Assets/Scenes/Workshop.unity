@@ -597,8 +597,27 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DialogueUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8272173150110112590, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1801906976}
+    - target: {fileID: 8272173150110112590, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+--- !u!114 &1801906976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4008084937268498243, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+  m_PrefabInstance: {fileID: 1631713392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c52274a322f7c449a5953f92902a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1804466891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -910,5 +929,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6072837434917399314, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
+      propertyPath: sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072837434917399314, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: This is a test.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072837434917399314, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: You passed.
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4721925273060733882, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
