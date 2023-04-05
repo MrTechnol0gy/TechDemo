@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueText;
     public GameObject player;
     public Animator animator;
+    public CameraController cameraController;
 
     private Queue<string> dialogue; 
 
@@ -50,10 +51,12 @@ public class DialogueManager : MonoBehaviour
         dialogue.Clear();
 
         Time.timeScale = 1f;
+        cameraController.GetComponent<CameraController>().enabled = true;
     }
 
     void SuspendPlayerControl()
     {
         Time.timeScale = 0f;
+        cameraController.GetComponent<CameraController>().enabled = false;               
     }
 }

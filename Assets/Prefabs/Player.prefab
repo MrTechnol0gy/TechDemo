@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 4008084937268498243}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1155,6 +1155,7 @@ MonoBehaviour:
   dialogueText: {fileID: 8272173149036482468}
   player: {fileID: 246102061939717054}
   animator: {fileID: 246102060713324038}
+  cameraController: {fileID: 246102060847358064}
 --- !u!1 &246102061941733586
 GameObject:
   m_ObjectHideFlags: 0
