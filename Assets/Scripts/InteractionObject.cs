@@ -10,7 +10,7 @@ public class InteractionObject : MonoBehaviour
     {
         nothing,        // default nothing object
         info,           // objects that give simple info    
-        pickup,    
+        pickup,         // objects that are picked up
         dialogue        // lines of dialogue from a character
     }
 
@@ -20,6 +20,8 @@ public class InteractionObject : MonoBehaviour
     [Header("Simple Info Message")]
     public string infoMessage;
     private TMP_Text infoText;
+    private Outline outline;
+    private GameObject thisGameObject;
 
     [Header("Dialogue Text")]
     [TextArea]
@@ -27,7 +29,10 @@ public class InteractionObject : MonoBehaviour
 
     public void Start()
     {
+        thisGameObject = this.gameObject;
         infoText = GameObject.Find("InfoText").GetComponentInChildren<TMP_Text>();
+        outline = GetComponent<Outline>();
+        outline.enabled = !outline.enabled;     //outline starts disabled
     }
     public void DebugTest()
     {
@@ -59,11 +64,12 @@ public class InteractionObject : MonoBehaviour
         yield return new WaitForSeconds(delay);
         infoText.text = null;
     }
-    void OnTriggerStay(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") == true)
         {
-            
+            Debug.Log("outline enabled");
+            outline.enabled = !outline.enabled;     //turning it off turns it on. That doesn't make any sense, but it works.
         }
     }
 
@@ -71,7 +77,8 @@ public class InteractionObject : MonoBehaviour
     {
         if (other.CompareTag("Player") == true)
         {
-            
+            Debug.Log("outline disabled");
+            outline.enabled = !outline.enabled;     //turning it off turns it off, which makes sense, unless it doesn't.
         }
     }
 }
