@@ -589,6 +589,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8272173148729483789, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272173148729483789, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+      propertyPath: m_TagString
+      value: DialogueUI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
 --- !u!1001 &1804466891
