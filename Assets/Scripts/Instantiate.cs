@@ -34,7 +34,7 @@ public class Instantiate : MonoBehaviour
     {
         Rigidbody spawnedInstance;
         spawnedInstance = Instantiate(spawnedItem, spawnPoint.position, spawnPoint.rotation) as Rigidbody;
-        spawnedInstance.AddForce(spawnPoint.up * spawn_Speed * Time.deltaTime);
+        spawnedInstance.AddForce(spawnPoint.up * spawn_Speed);
         if (destroy_Script == true)
         {
             Destroy(this, 2.5f); //this destroys the script component, which is hilarious
@@ -45,7 +45,7 @@ public class Instantiate : MonoBehaviour
         }
         else if (destroy_Reality == true)
         {
-            Destroy(spawnedInstance, 2); //this freezes the spawned item 2 seconds after it is spawned.
+            Destroy(spawnedInstance, 1); //this freezes the spawned item 2 seconds after it is spawned.
         }
         //GameObject.Destroy(spawnedInstance, 1); //seems to do same as above
     }
