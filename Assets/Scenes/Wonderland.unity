@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -719,6 +719,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4a814d0c5dbba7545b8ddf112351b4e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fd08aee12f1d74f9688a75ae82f54f, type: 3}
+--- !u!1 &137626083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7353701859185696470, guid: cb00be00e8f50674794ce76e726826b4, type: 3}
+  m_PrefabInstance: {fileID: 318198170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &146014910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4539,6 +4544,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 246102061939717049, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 137626083}
     - target: {fileID: 246102061939717054, guid: d16885a3be315bd49a5118a853a8b7b8, type: 3}
       propertyPath: m_Name
       value: Player

@@ -44,7 +44,7 @@ public class MobilePlatform : MonoBehaviour
         {
             _switch = true;
             t = 0.0f;
-            Debug.Log("go");
+            //Debug.Log("go");
         }
         
     }
@@ -56,7 +56,7 @@ public class MobilePlatform : MonoBehaviour
         {
             _switch = false;
             t = 0.0f;
-            Debug.Log("come");
+            //Debug.Log("come");
         }
     }
 }
