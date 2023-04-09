@@ -11,5 +11,7 @@ public class EaglesNest : MonoBehaviour
         
     [Header("Collectibles")]
     [SerializeField] int door_Keys = 0;
+    [SerializeField] int potion = 0;
+    [SerializeField] int crystal = 0;
 
 }

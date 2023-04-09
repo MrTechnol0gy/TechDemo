@@ -23,16 +23,33 @@ public class InteractionObject : MonoBehaviour
     private Outline outline;
     private GameObject thisGameObject;
 
+    [Header("Multi-dialogue")]
+    public bool Yes;
+
+    [Header("Trigger Item")]
+    public GameObject triggerItem;
+    public int triggerItemAmount = 0;
+
     [Header("Dialogue Text")]
     [TextArea]
     public string[] sentences;
 
+    [Header("Transition Text")]
+    [TextArea]
+    public string[] transitionSentence;
+
+    [Header("Alternate Dialogue Text")]
+    [TextArea]
+    public string[] altSentences;
+
+    private bool firstTalk;
     public void Start()
     {
         thisGameObject = this.gameObject;
         infoText = GameObject.Find("InfoText").GetComponentInChildren<TMP_Text>();
         outline = GetComponent<Outline>();
         outline.enabled = !outline.enabled;     //outline starts disabled
+        firstTalk = true;
     }
     public void DebugTest()
     {
@@ -55,7 +72,19 @@ public class InteractionObject : MonoBehaviour
 
     public void Dialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(sentences);
+        if (Yes == false || Yes == true && triggerItemAmount == 0 && firstTalk == true)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(sentences);
+            firstTalk = false;
+        }
+        else if (Yes == true && triggerItemAmount == 0 && firstTalk == false)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(transitionSentence);
+        }
+        else if (Yes == true && triggerItemAmount > 0 && firstTalk == false)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(altSentences);
+        }
     }
 
     IEnumerator ShowInfo(string message, float delay)
