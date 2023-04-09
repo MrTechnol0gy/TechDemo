@@ -27,8 +27,8 @@ public class InteractionObject : MonoBehaviour
     public bool Yes;
 
     [Header("Trigger Item")]
-    public GameObject triggerItem;
-    public int triggerItemAmount = 0;
+    public string triggerItemName;
+    public int triggerItemRequiredAmount = 0;
 
     [Header("Dialogue Text")]
     [TextArea]
@@ -43,12 +43,14 @@ public class InteractionObject : MonoBehaviour
     public string[] altSentences;
 
     private bool firstTalk;
+    private GameObject enest;
     public void Start()
     {
         thisGameObject = this.gameObject;
         infoText = GameObject.Find("InfoText").GetComponentInChildren<TMP_Text>();
         outline = GetComponent<Outline>();
         outline.enabled = !outline.enabled;     //outline starts disabled
+        enest = GameObject.FindWithTag("GameController");
         firstTalk = true;
     }
     public void DebugTest()
@@ -72,19 +74,20 @@ public class InteractionObject : MonoBehaviour
 
     public void Dialogue()
     {
-        if (Yes == false || Yes == true && triggerItemAmount == 0 && firstTalk == true)
+        if (Yes == false || Yes == true && firstTalk == true)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(sentences);
             firstTalk = false;
         }
-        else if (Yes == true && triggerItemAmount == 0 && firstTalk == false)
+        else if (Yes == true && triggerItemRequiredAmount != enest.GetComponent<EaglesNest>().GetAmount(triggerItemName) && firstTalk == false)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(transitionSentence);
         }
-        else if (Yes == true && triggerItemAmount > 0 && firstTalk == false)
+        else if (Yes == true && triggerItemRequiredAmount == enest.GetComponent<EaglesNest>().GetAmount(triggerItemName) && firstTalk == false)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(altSentences);
         }
+        //Debug.Log("item name" + triggerItemName + "amount equals = " + enest.GetComponent<EaglesNest>().GetAmount(triggerItemName));
     }
 
     IEnumerator ShowInfo(string message, float delay)
@@ -97,7 +100,7 @@ public class InteractionObject : MonoBehaviour
     {
         if (other.CompareTag("Player") == true)
         {
-            Debug.Log("outline enabled");
+            //Debug.Log("outline enabled");
             outline.enabled = !outline.enabled;     //turning it off turns it on. That doesn't make any sense, but it works.
         }
     }
@@ -106,7 +109,7 @@ public class InteractionObject : MonoBehaviour
     {
         if (other.CompareTag("Player") == true)
         {
-            Debug.Log("outline disabled");
+            //Debug.Log("outline disabled");
             outline.enabled = !outline.enabled;     //turning it off turns it off, which makes sense, unless it doesn't.
         }
     }
