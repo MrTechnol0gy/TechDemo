@@ -55,7 +55,7 @@ public class InteractionObject : MonoBehaviour
     }
     public void DebugTest()
     {
-        Debug.Log("this is a " + gameObject.name);
+        //Debug.Log("this is a " + gameObject.name);
     }
 
     public void Nothing()

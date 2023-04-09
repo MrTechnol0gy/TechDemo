@@ -15,11 +15,11 @@ public class EaglesNest : MonoBehaviour
     string Potion;
     [SerializeField] int potion = 0;
     string Crystal;
-    [SerializeField] int crystal = 5;
+    [SerializeField] int crystal = 0;
     
     public int GetAmount(string name)
     {
-        if (name == "DoorKeys")
+        if (name == "Key")
         {
             return door_Keys;
         }
@@ -39,7 +39,7 @@ public class EaglesNest : MonoBehaviour
 
     public void IncreasePickUp (string name)
     {
-        if (name == "DoorKeys")
+        if (name == "Key")
         {
             door_Keys++;
         }
@@ -55,7 +55,7 @@ public class EaglesNest : MonoBehaviour
 
     public void DecreasePickUp (string name)
     {
-        if (name == "DoorKeys")
+        if (name == "Key")
         {
             door_Keys--;
         }

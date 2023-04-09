@@ -16,16 +16,21 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private bool jumping = false;
     private bool crouching = false;
+    private GameObject enest;
 
     public Image RunToggleUI;
     public Image CrouchToggleUI;
 
-    public Text velocityText;
+    public Text velocityText;    
 
+    void start()
+    {
+        enest = GameObject.FindWithTag("GameController");
+    }
     // Update is called once per frame
     void Update()
     {
-        velocityText.text = getVelocity().ToString("#.00"); ;
+        velocityText.text = getVelocity().ToString("#.00");        
     }
 
     public void AddMovementInput(float forward, float right)    // update movement inputs

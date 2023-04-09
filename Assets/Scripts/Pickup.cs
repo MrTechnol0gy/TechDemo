@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    [SerializeField] string pickupName;
     [SerializeField] bool repeatable = false;
     [SerializeField] int respawn_Timer = 1;
 
@@ -19,23 +20,19 @@ public class Pickup : MonoBehaviour
         pickup = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && repeatable == false)
         {
             sfx.Play();
+            enest.GetComponent<EaglesNest>().IncreasePickUp(pickupName);
             Invoke("DeactivateMe", 0.1f);            
         }
         else if (other.gameObject.CompareTag("Player") && repeatable == true)
         {
             
             sfx.Play();
+            enest.GetComponent<EaglesNest>().IncreasePickUp(pickupName);
             Invoke("DeactivateMe", 0.1f);            
             Invoke("respawn_Pickup", respawn_Timer);
         }
